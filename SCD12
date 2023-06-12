@@ -1,0 +1,38 @@
+import java.lang.*;
+import java.util.*;
+public class Main {
+
+    public static void display(int arr[]) {
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int arr[] = new int[n];
+        int res[] = new int[n+1];
+        for(int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int position = scn.nextInt();
+        int element = scn.nextInt();
+
+        int index = position - 1;
+
+        for(int i = 0; i < index; i++) {
+            res[i] = arr[i];
+        }
+
+        res[index] = element;
+
+        for(int i = index; i < n; i++) {
+            res[i+1] = arr[i];
+        }
+
+        display(res);
+    }
+}
