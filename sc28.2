@@ -1,0 +1,22 @@
+public int solve(int a, int b, int c)
+     {
+     double chocolates = a / b; //no of chocolates he can buy
+       int g = (int)(chocolates); //typecasting since return type is int
+     
+       int r = 0;
+       int u = 0;
+      if(g >= c)   //since no of chocolates he can buy (g) are more than c ie bad for his health
+      {
+       
+          r = g - c;  //therefore saving the difference between no. of chocolates he can buy (g) and he requires (c)
+           
+          u = g - r; //now save the diff between the no of chocolates he can buy (g) and r
+         //print (u) that many chocolates he will buy within health limit with a rupees
+      }
+      else if(g < c)  //since no of chocolates he can buy are less c
+      {
+          u = g;
+       
+      }
+      return u;
+    }
