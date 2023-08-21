@@ -1,0 +1,24 @@
+let map = new Map();
+var buildTree = function(inorder, postorder) {
+    function postIn(post, ps, pe, ino, is, ie) {
+        if (ps > pe || is > ie)
+            return null;
+        var root = new TreeNode(post[pe]);
+        var idx = map.get(post[pe]);
+        var count = idx - is;
+        
+        root.left = postIn(post, ps, ps + count - 1, ino, is, idx - 1);
+        root.right = postIn(post, ps + count, pe - 1, ino, idx + 1, ie);
+        return root;
+    }
+    if (inorder.length <= 1) {
+        if (inorder.length == 0) {
+            return null;
+        }
+        return new TreeNode(postorder[0]);
+    }
+    for (let i = 0; i < inorder.length; i++) {
+        map.set(inorder[i], i);
+    }
+    return postIn(postorder, 0, postorder.length - 1, inorder, 0, inorder.length - 1);
+};
