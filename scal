@@ -1,0 +1,57 @@
+public class Solution {
+    public int[][] solve(int[][] A) {
+        int firstRow = 0;
+        int firstColumn = 0;
+        // check first row elements and if 0 make flag = 0;
+        for(int j = 0 ; j < A[0].length; j++) {
+            if(A[0][j] == 0) {
+                firstRow = 1;
+                break;
+            }
+        }
+
+        // check first column elements and if 0 make flag = 0;
+        for(int i = 0 ; i < A.length; i++) {
+            if(A[i][0] == 0) {
+                firstColumn = 1;
+                break;
+            }
+        }
+
+        // Now Iterate throgh the matrix form i = 1and j = 1 and if element is 0 make first row element and column element as 0 
+        for(int i = 1 ; i < A.length; i++) {
+            for(int j = 1 ; j < A[0].length; j++) {
+                if(A[i][j] == 0) {
+                    A[0][j] = 0;
+                    A[i][0] = 0;
+                }
+            }
+        }
+
+        // Now iterate throgh the matrix again and using first row element or first column element make the current element as 0
+        for(int i = 1 ; i < A.length; i++) {
+            for(int j = 1 ; j < A[0].length; j++) {
+                if(A[0][j] == 0 || A[i][0] == 0) {
+                    A[i][j] = 0 ;
+                }
+            }
+        }
+
+        // using row flag if set as 1 then make entire row as 0
+        if(firstRow == 1) {
+            for(int j = 0; j < A[0].length; j++) {
+                A[0][j] = 0;
+            }
+        }
+
+        // using column flag if set as 1 make entire column as 0
+        if(firstColumn == 1) {
+            for(int i = 0 ; i < A.length; i++) {
+                A[i][0] = 0;
+            }
+        }
+
+        return A;
+
+    }
+}
