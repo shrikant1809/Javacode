@@ -1,0 +1,26 @@
+public class Solution {
+    public long solve(int[][] A) {
+        int n = A.length;
+        int m = A[0].length;
+        
+        long result = Long.MIN_VALUE;
+        for (int left = 0; left < m; left++) {
+            long[] temp = new long[n];
+            
+            for (int right = left; right < m; right++) {
+                for (int i = 0; i < n; i++) {
+                    temp[i] += A[i][right];
+                }
+                
+                long maxEndingHere = temp[0], maxSoFar = temp[0];
+                for (int i = 1; i < n; i++) {
+                    maxEndingHere = Math.max(temp[i], maxEndingHere + temp[i]);
+                    maxSoFar = Math.max(maxSoFar, maxEndingHere);
+                }
+                result = Math.max(result, maxSoFar);
+            }
+        }
+        
+        return result;
+    }
+}
