@@ -1,0 +1,22 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+
+        int n = A.length;
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        hm.put(0,1);
+        int ans =0;
+         int sum=0;
+
+        for(int i=0;i<n;i++)
+        {
+           sum+=A[i];
+           if(hm.containsKey(sum-B))
+           {
+               ans+= hm.get(sum-B);
+           }
+           hm.put(sum,hm.getOrDefault(sum,0)+1);
+        }
+
+        return ans;
+    }
+}
