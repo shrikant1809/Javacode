@@ -1,0 +1,22 @@
+class Solution {
+    public int minCostConnectPoints(int[][] points) {
+        int res=0, n=points.length, dist[]=new int[n], nn=n, curr=0, next_pnt=0, min_d, inf=Integer.MAX_VALUE;
+        Arrays.fill(dist, inf-1);
+
+        while(nn-->1) { // since there are n-1 edges in MST
+            min_d=dist[curr]=inf;
+            for(int i=0;i<n;i++) { // for each curr node, updating all other min distances
+                if(dist[i]!=inf) { // marking visited nodes
+                    dist[i]=Math.min(dist[i], Math.abs(points[i][0]-points[curr][0]) +
+                                              Math.abs(points[i][1]-points[curr][1]));
+                    if(dist[i]<min_d) { // finding the next minimum distance point as in pseudo heap
+                        next_pnt=i;
+                        min_d=dist[i];
+                    }
+                }
+            }
+            res+=dist[curr=next_pnt];
+        }
+        return res;
+    }
+}
