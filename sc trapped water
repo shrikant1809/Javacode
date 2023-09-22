@@ -1,0 +1,27 @@
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
+public class Solution {
+    public int solve(TreeNode A) {
+        if (A == null) {
+            return 0; // If node is null, height is 0
+        }
+
+        // Recursively find the height of left and right subtrees
+        int leftHeight = solve(A.left);
+        int rightHeight = solve(A.right);
+
+        // Return maximum of left and right subtree heights + 1
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
