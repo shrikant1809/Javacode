@@ -1,0 +1,32 @@
+public class Solution {
+    public int[] solve(int[] A) {
+        // Step 1: XOR all the numbers.
+        int xor = 0;
+        for (int i = 0; i < A.length; i++) {
+            xor ^= A[i];
+        }
+
+        // Step 2: Get the rightmost set bit of xor.
+        int setBit = xor & (-xor);
+
+        int x = 0, y = 0;
+
+        // Step 3: Split numbers into 2 groups based on the set bit, and XOR them separately.
+        for (int i = 0; i < A.length; i++) {
+            if ((A[i] & setBit) != 0) {
+                x ^= A[i];
+            } else {
+                y ^= A[i];
+            }
+        }
+
+        // Ensure the result is in ascending order
+        if (x > y) {
+            int temp = x;
+            x = y;
+            y = temp;
+        }
+
+        return new int[] {x, y};
+    }
+}
