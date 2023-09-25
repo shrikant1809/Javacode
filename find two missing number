@@ -1,0 +1,47 @@
+public class Solution {
+    public int[] solve(int[] A) {
+        int N = A.length;
+        int xorAll = 0;
+        
+        // XOR all numbers from 1 to N+2
+        for (int i = 1; i <= N + 2; i++) {
+            xorAll ^= i;
+        }
+        
+        // XOR with all numbers in the given array
+        for (int num : A) {
+            xorAll ^= num;
+        }
+        
+        // Get the rightmost set bit of xorAll (which is the XOR of two missing numbers)
+        int setBit = xorAll & (-xorAll);
+
+        int x = 0, y = 0;
+        
+        // Use the set bit to differentiate between the two missing numbers
+        for (int i = 1; i <= N + 2; i++) {
+            if ((i & setBit) != 0) {
+                x ^= i;
+            } else {
+                y ^= i;
+            }
+        }
+        
+        for (int num : A) {
+            if ((num & setBit) != 0) {
+                x ^= num;
+            } else {
+                y ^= num;
+            }
+        }
+        
+        // Ensure the result is in ascending order
+        if (x > y) {
+            int temp = x;
+            x = y;
+            y = temp;
+        }
+
+        return new int[] {x, y};
+    }
+}
