@@ -1,0 +1,35 @@
+class Solution {
+    public String removeDuplicateLetters(String s) {
+        int[] count = new int[26];  // to store frequency of each character
+        boolean[] inStack = new boolean[26];  // to check if a character is already in the stack
+        StringBuilder stack = new StringBuilder();  // use StringBuilder as a stack
+
+        // populate the count array
+        for (char ch : s.toCharArray()) {
+            count[ch - 'a']++;
+        }
+
+        for (char ch : s.toCharArray()) {
+            // reduce the count of the current character
+            count[ch - 'a']--;
+
+            // if the current character is already in the stack, continue
+            if (inStack[ch - 'a']) continue;
+
+            // while the stack has characters, and the current character is smaller than 
+            // the top character of the stack, and the top character will appear later
+            while (stack.length() > 0 && ch < stack.charAt(stack.length() - 1) && count[stack.charAt(stack.length() - 1) - 'a'] > 0) {
+                // mark the top character of the stack as not in the stack anymore
+                inStack[stack.charAt(stack.length() - 1) - 'a'] = false;
+                // remove the top character from the stack
+                stack.deleteCharAt(stack.length() - 1);
+            }
+
+            // add the current character to the stack and mark it as present in the stack
+            stack.append(ch);
+            inStack[ch - 'a'] = true;
+        }
+
+        return stack.toString();
+    }
+}
