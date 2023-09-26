@@ -1,0 +1,30 @@
+public class Solution {
+    public int[] solve(int[] A) {
+        // Step 1: Find the maximum value in the array
+        int max_val = A[0];
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] > max_val) {
+                max_val = A[i];
+            }
+        }
+        
+        // Step 2: Create the count array and initialize it to zero
+        int[] count = new int[max_val + 1];
+        
+        // Step 3: Populate the count array
+        for (int i = 0; i < A.length; i++) {
+            count[A[i]]++;
+        }
+        
+        // Step 4: Reconstruct the input array using the count array
+        int index = 0;
+        for (int i = 0; i < count.length; i++) {
+            while (count[i] > 0) {
+                A[index++] = i;
+                count[i]--;
+            }
+        }
+        
+        return A;
+    }
+}
