@@ -1,0 +1,13 @@
+public class Solution {
+    public int solve(int[] A) {
+        long mod = 1000000007;  // Given modulo constraint
+        long sum = 0;  // To store the result
+
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A.length; j++) {
+                sum = (sum + (A[i] % A[j])) % mod;  // Modulo taken at each step to avoid overflow
+            }
+        }
+        return (int) sum;
+    }
+}
