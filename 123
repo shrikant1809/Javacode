@@ -1,0 +1,16 @@
+public class Solution {
+    public void arrange(ArrayList<Integer> a) {
+        int n = a.size();
+
+        // Step 1: Encoding two numbers into one
+        for (int i = 0; i < n; i++) {
+            int num = a.get(i) + (a.get(a.get(i)) % n) * n;
+            a.set(i, num);
+        }
+
+        // Step 2: Extracting new values
+        for (int i = 0; i < n; i++) {
+            a.set(i, a.get(i) / n);
+        }
+    }
+}
