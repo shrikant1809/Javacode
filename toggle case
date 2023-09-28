@@ -1,0 +1,20 @@
+public class Solution {
+    public String solve(String A) {
+        StringBuilder result = new StringBuilder();  // Use StringBuilder for efficient string operations
+        
+        for(int i = 0; i < A.length(); i++) {
+            char ch = A.charAt(i);
+            
+            // If the character is uppercase, convert it to lowercase
+            if(Character.isUpperCase(ch)) {
+                result.append(Character.toLowerCase(ch));
+            }
+            // If the character is lowercase, convert it to uppercase
+            else {
+                result.append(Character.toUpperCase(ch));
+            }
+        }
+        
+        return result.toString();
+    }
+}
