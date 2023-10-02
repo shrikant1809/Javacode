@@ -1,0 +1,19 @@
+module.exports = {
+    //param A : array of array of integers
+    //param B : integer
+    //return a array of array of integers
+    solve: function(A, B) {
+        // Calculate Euclidean distance
+        function distance(point) {
+            return point[0]*point[0] + point[1]*point[1];
+        }
+        
+        // Sort the points by distance
+        A.sort((p1, p2) => {
+            return distance(p1) - distance(p2);
+        });
+
+        // Return first B points
+        return A.slice(0, B);
+    }
+};
