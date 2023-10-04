@@ -1,0 +1,90 @@
+var MyHashMap = function () {
+
+    /* -------------------------------------------------------------------------- */
+    /*                             706. Design HashMap                            */
+    /* -------------------------------------------------------------------------- */
+
+    /**
+	 * @author  Samuel Hinchliffe
+	 * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
+	 * @see    {@link github.com/Samuel-Hinchliffe}
+	 */
+
+    // This question is very close to our hashset question.
+    // Although this time, we're creating a hashmap.
+    // Meaning, that our set now comes with a value that will be deleted / updated / inserted etc.
+
+    // We're going to be using a object for our map here.
+    // Technically, we could hook onto the `this` keyword
+    // as that itself is a object, but for the purpose of this
+    // guide, we will be creating a object called `map`
+
+    // ** What is a hashmap?
+    // This is something know as a hashmap.
+    // A hashmap is a object with special functions.
+
+    // ** What does it do?
+    // A Hash Map is simple. It has key value pairs.
+    // Think of it like a dictionary. You know a word(key) but you need
+    // to know what it means (value). For instance, you search the word
+    // `supercalifragilisticexpialidocious` to find it means:
+    // `is a nonsensical word that is sometimes used to describe something as being great`
+
+    // ** What does it look
+    // It looks like this (Key on the left, Value on the right)
+    // `testing` => 'Something we don't do at startups'
+    // `quality` => 'How much money it made'
+
+    // ** What can we do with it?
+    // We can instantly search for what we want.
+    // If we want to get the definition for the word `testing`
+    // we could get that instantly just by asking
+    // `hash_map.get('testing')` (Returns Definition)
+    // We can also just simply ask if it exists
+    // `hash_map.has('testing')` (Returns Bool)
+    // And we can also set them using
+    // `hash_map.set('testing', 'Something we don't do at startups')`
+
+    // In Python we call this a Dictionary
+    // In PHP we call this an associative array
+    // In Java we call this a HashMap.
+    // Most Languages call it Map.
+    this.map = {};
+};
+
+MyHashMap.prototype.put = function (key, value) {
+    // Time Complexity: Constant
+    // Space Complexity: Constant (As the operation alone does not create space)
+
+    // So, we're using array notation to set a object property.
+    // Normally we say `this.map.whateverTheKeyIs` but as that key is dynamic
+    // we use array notation to `put` it. So we also set it's value alongside it.
+    this.map[key] = value;
+};
+
+MyHashMap.prototype.get = function (key) {
+
+    // Time Complexity: Constant (But how? Hashes are used under the hood for instant lookup)
+    // Space Complexity: Constant (As the operation alone does not create space)
+
+    // Here we ask. 'Does the key exist?'
+    // If it does, we return the value from it.
+    // If not, we return -1;
+
+    // 'Why do you check if it's undefined and not
+    // just use falsely values?' You smart people may ask.
+    // It's because we're dealing with Integers and 0 is considered a false value
+    // which mean that the function thinks the key does not exist while it does.
+    // So we instead ask if it's defined or not.
+    return this.map[key] != undefined ? this.map[key] : -1;
+};
+
+
+MyHashMap.prototype.remove = function (key) {
+
+    // Time Complexity: Constant (But how? Hashes are used under the hood for instant lookup)
+    // Space Complexity: Constant (As the operation alone does not create space)
+
+    // Here we use the delete keyword to remove the object prop.
+    delete this.map[key];
+};
