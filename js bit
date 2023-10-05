@@ -1,0 +1,9 @@
+module.exports = {
+    solve: function(A, B) {
+        // Create the mask
+        let mask = ~(1 << B);
+
+        // Unset the B-th bit using bitwise AND with the mask
+        return A & mask;
+    }
+};
