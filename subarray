@@ -1,0 +1,20 @@
+import java.util.HashSet;
+
+public class Solution {
+    public int solve(int[] A) {
+        HashSet<Integer> cumulativeSums = new HashSet<>();
+        int sum = 0;
+        
+        for (int value : A) {
+            sum += value;
+            
+            if (sum == 0 || cumulativeSums.contains(sum)) {
+                return 1; // Found a sub-array with 0 sum
+            }
+            
+            cumulativeSums.add(sum);
+        }
+        
+        return 0; // No sub-array with 0 sum found
+    }
+}
