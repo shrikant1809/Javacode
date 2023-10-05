@@ -1,0 +1,23 @@
+module.exports = {
+    solve: function(A, B) {
+        // create a hashmap to store frequency of numbers in A
+        let freqMap = {};
+        
+        // populate the frequency map
+        for (let num of A) {
+            if (!freqMap[num]) {
+                freqMap[num] = 1;
+            } else {
+                freqMap[num]++;
+            }
+        }
+        
+        // check the frequency for each number in B and store in result
+        let result = [];
+        for (let query of B) {
+            result.push(freqMap[query] || 0);
+        }
+        
+        return result;
+    }
+};
