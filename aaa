@@ -1,0 +1,14 @@
+class Circle { 
+    constructor(radius) {
+        this.radius = radius;
+        this.pi = 3.14;
+    }
+
+    perimeter(){
+        return 2 * this.pi * this.radius;
+    }
+    
+    area(){
+        return this.pi * this.radius * this.radius;
+    }
+}
