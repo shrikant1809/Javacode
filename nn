@@ -1,0 +1,17 @@
+// Definition for singly-linked list.
+function Node(data){
+    this.data = data;
+    this.next = null;
+}
+
+module.exports = { 
+    //param A : head node of linked list
+    solve : function(A){
+        let current = A;
+        while(current !== null){
+            process.stdout.write(current.data + " ");  // print the value followed by space
+            current = current.next;
+        }
+        console.log();  // print a new line after printing the entire list
+    }
+};
