@@ -1,0 +1,12 @@
+module.exports = { 
+    //param A : integer
+    //param B : integer
+    //return an integer
+    solve : function(A, B){
+        let mask = 1 << B;
+        if(A & mask) {
+            return 1;
+        }
+        return 0;
+    }
+};
